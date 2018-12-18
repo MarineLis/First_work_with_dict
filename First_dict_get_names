@@ -1,0 +1,74 @@
+Students = {
+    "Kolya": {
+        "mom": {
+            "work": "Washing",
+            "name": "Zoya"
+        },
+        "lessons": {
+            "lesson1": {
+                "todo": ["learn month", "cooking"]
+            },
+            "lesson2": {
+                "todo": ["Math", "Geography"]
+            }
+        }
+    },
+    "Helga": {
+        "mom": {
+            "work": "Dishing",
+            "name": "Klara"
+        },
+        "lessons": {
+            "lesson1": {
+                "todo": ["learn month", "cooking"]
+            },
+            "lesson2": {
+                "todo": ["Running","History", "Python"]
+            },
+            "lesson3": {
+                "todo": ["Riding","Searching"]
+            }
+        }
+    },
+    "Lola": {
+        "mom": {
+            "work": "Cooking",
+            "name": "Polina"
+        },
+        "lessons": {
+            "lesson1": {
+                "todo": ["learn month", "feeding"]
+            },
+            "lesson2": {
+                "todo": ["PM", "Geography", "Math"]
+            }
+        }
+    },
+    "Stas": {
+        "mom": {
+            "work": "Reading",
+            "name": "Sonya"
+        },
+        "lessons": {
+            "lesson1": {
+                "todo": ["learn month", "writing"]
+            },
+            "lesson2": {
+                "todo": ["Physics"]
+            }
+        }
+    }
+}
+
+#doc
+def printMomNames(Students, names):
+
+    if names==[]:
+        return None
+
+    print(Students[names[0]]["mom"]["name"])
+
+    printMomNames(Students, names[1:])
+
+
+printMomNames(Students, [input("Enter name ")])
