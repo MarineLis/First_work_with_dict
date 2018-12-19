@@ -1,0 +1,38 @@
+
+"""
+    Написати валідатор ....
+    Правило валідації
+"""
+
+import re
+
+def getNumber(text):
+    user_input = input(text)
+
+    if re.match(r"^[A-Z]{2}-\d{4}$", user_input) :
+        return user_input
+    else:
+        return False
+
+
+
+def getPassportNumber(text):
+    user_input = input(text)
+
+    if re.match(r"^[A-Z]{2}-[A-Z]{2}-[A-Z]{2}$", user_input):
+        return user_input
+    else:
+        return False
+
+
+#description
+def getWord(text):
+    user_input = input(text)
+    if re.match(r"(([A-Z])|([a-z]))+", user_input):
+        return user_input
+    else:
+        return False
+
+
+# getWord("Enter color")
+# getWord("Enter word")
