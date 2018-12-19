@@ -1,0 +1,41 @@
+import pprint
+import re
+"""datassset = {
+    "ST": {
+        "City": {
+            "CERT": {
+                "Name": None,
+                "Acquiring Institution": None,
+                "Closing Date": None
+            }
+        }
+    }
+}
+"""
+
+dataset = dict()
+
+
+file = open("banklist.csv")
+
+for line in file:
+    line_list = line.split(',')
+    dataset[line_list[2]] = dict()
+    dataset[line_list[2]][line_list[1]] = dict()
+    dataset[line_list[2]][line_list[1]][line_list[3]] = {}
+    dataset[line_list[2]][line_list[1]][line_list[3]]['Bank Name'] = line_list[0]
+    dataset[line_list[2]][line_list[1]][line_list[3]]['Acquiring Bank'] = line_list[4]
+    dataset[line_list[2]][line_list[1]][line_list[3]]['Closing Date'] = line_list[5]
+
+pprint.pprint(dataset)
+
+result1 = dict()
+for state in dataset:
+    for city in dataset[state]:
+        for code in dataset[state][city]:
+            result1[code] = dataset[state][city][code]['Closing Date']
+
+
+
+pprint.pprint(result1)
+file.close()
