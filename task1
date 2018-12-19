@@ -1,0 +1,18 @@
+from data import dataset
+def addUserCar (passport,car, color ):
+    if passport in dataset:
+        if car in dataset[passport]:
+            dataset[passport][car]["color"].add(color)
+        else:
+            dataset[passport][car] = dict()
+            dataset[passport][car]["color"] = {color}
+    else:
+        dataset[passport] = dict()
+        dataset[passport][car] = dict()
+        dataset[passport][car]["color"] = {color}
+
+
+
+addUserCar ("BC-MI-UH", "ghdjk", "djsjkk")
+
+addUserCar("BC-MI-UH","LN-1234","Blue")
