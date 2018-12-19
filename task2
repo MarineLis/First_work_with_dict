@@ -1,0 +1,26 @@
+from validators.lib import *
+from data import dataset
+from task1 import addUserCar
+
+def addUPasVal():
+    passport = getPassportNumber("Введите паспорт")
+    while passport == False:
+        passport = getPassportNumber("Введите паспорт")
+    return passport
+def addUCarVal():
+    car = getNumber("Введите номер автомобиля")
+    while car == False:
+        car = getNumber("Введите номер авто")
+    return car
+
+def addUColVal():
+    color = getWord("Введите цвет авто")
+    while color == False:
+        color = getWord("Введите цвет авто")
+    return color
+
+
+addUserCar(addUPasVal(),addUCarVal(), addUColVal())
+
+print(dataset)
+print("\n\n")
