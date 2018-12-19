@@ -1,0 +1,63 @@
+import pprint
+import plotly.plotly as py
+import plotly.graph_objs as go
+import plotly.tools
+plotly.tools.set_credentials_file(username='mLisichenko', api_key='ZnOfBlowVHYYaXOzilgk')
+'''dataset = {
+    "country": {
+                "year": {
+                        "Male": {
+                            "age": num                           
+                        }
+                }
+    }
+
+}'''
+
+dataset = {}
+
+
+def add_country(data):
+    country = data[0]
+    if country not in dataset:
+        dataset[country] = {}
+    year = data[1]
+    if year not in dataset[country]:
+        dataset[country][year] = {}
+    sex = data[2]
+    if sex not in dataset[country][year]:
+        dataset[country][year][sex] = {}
+    age = data[3]
+    num = data[4]
+    dataset[country][year][sex][age] = num
+
+
+
+with open("master.csv") as f:
+    f.readline()
+    #generator = [map(add_country(l.split(',')), l.split(',')) for l in f]
+    for i in f:
+        add_country(i.split(','))
+    pprint.pprint(dataset)
+    f.close()
+    labels = ["Kazakhstan", "Ukraine", "Japan"]
+    values = []
+
+    for country in labels:
+        number = 0
+        for year in dataset[country]:
+            for sex in dataset[country][year]:
+                for age in dataset[country][year][sex]:
+                    number += int(dataset[country][year][sex][age])
+        values.append(number)
+
+
+    """for country in labels:
+        num = 0
+        for year in dataset[country]:
+            num += 1
+        print(num)"""
+    trace = go.Pie(labels=labels, values=values)
+
+    py.iplot([trace], filename='basic_pie_chart')
+    f.close()
